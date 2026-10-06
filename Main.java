@@ -210,10 +210,11 @@ public class Main {
                         }
                         break;
 
-                    } if (!codigoEncontrado) {
+                    }  }
+                    if (!codigoEncontrado) {
                         System.out.println("Robô não encontrado.");
                     }
-                }
+               
                     break;
 
                     case 6: 
