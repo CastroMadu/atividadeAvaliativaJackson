@@ -36,6 +36,18 @@ public class Robo {
         System.out.println("Vitorias: "+vitoria);
         System.out.println("Derrotas: "+derrota);
         System.out.println("Pontos: "+pontos);
+    }
 
+    public void RecuperaEnergia(int qtdeEnergia){
+        int custoPonto = qtdeEnergia / 10;
+
+        this.energiaAtual += qtdeEnergia; 
+        this.pontos -= custoPonto; 
+
+
+    }
+
+    public boolean ExcluirRobo(int codigoExclusao){
+      return this.vitoria == 0 && this.derrota == 0; 
     }
 }
