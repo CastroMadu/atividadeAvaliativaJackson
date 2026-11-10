@@ -7,11 +7,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int opcao = 0;
-        robos.add(new Robo(1, "Flamengo", 20, 5));
-        robos.add(new Robo(2, "Fluminense", 10, 10));
-        robos.add(new Robo(3, "Cruzeiro", 12, 8));
-        robos.add(new Robo(4, "Internacional", 19, 2));
-        robos.add(new Robo(5, "Palmeiras", 22, 9));
+        robos.add(new RoboOfensivo(1, "Flamengo", 20, 5)); // tem que declarar o "tipo"
+        robos.add(new RoboEquilibrado(2, "Fluminense", 10, 10));
+        robos.add(new RoboDefensivo(3, "Cruzeiro", 12, 8));
+        robos.add(new RoboEquilibrado(4, "Internacional", 19, 2));
+        robos.add(new RoboOfensivo(5, "Palmeiras", 22, 9));
 
         do{
             System.out.println("\n===== CAMPEONATO DE ROBOS =====");
@@ -77,11 +77,23 @@ public class Main {
                         defesa = scanner.nextInt();
                     }
 
-                    Robo novoRobo = new Robo(codigo, nome, ataque, defesa);
-                    robos.add(novoRobo);
-
-                    System.out.println("Robo cadastrado com sucesso!");
-                    break;
+                    System.out.println("Tipo do robô: 1 - Ofensivo | 2 - Defensivo | 3 - Equilibrado");
+                      int tipo = scanner.nextInt();
+                        while (tipo < 1 || tipo > 3) {
+                            System.out.println("Tipo inválido. Digite 1, 2 ou 3: ");
+                            tipo = scanner.nextInt();
+                        }
+                        Robo novoRobo;
+                        if (tipo == 1) {
+                            novoRobo = new RoboOfensivo(codigo, nome, ataque, defesa);
+                        } else if (tipo == 2) {
+                            novoRobo = new RoboDefensivo(codigo, nome, ataque, defesa);
+                        } else {
+                            novoRobo = new RoboEquilibrado(codigo, nome, ataque, defesa);
+                        }
+                        robos.add(novoRobo);
+                        System.out.println("Robo cadastrado com sucesso!");
+                        break;
 
                     case 2:
                     System.out.println("\n===== CONSULTAR ROBO =====");
